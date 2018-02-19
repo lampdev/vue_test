@@ -8,12 +8,12 @@
         </Card>
         <br>
       </li>
-      <li v-for="сollection in filteredLabels" v-else="filter !== 0">
+      <!-- <li v-for="сollection in filteredLabels" v-else="filter !== 0">
         <Card :bordered="false" >
           <p>{{сollection.label}}</p>
         </Card>
         <br>
-      </li>
+      </li> -->
     </ul>
     <ul id="v-for-object" class="demo" v-else>
       <li v-for="group in groups">
@@ -58,6 +58,8 @@ export default {
   },
   mounted() {
     this.getGroups()
+    this.getFilteredLabels()
+    this.getLabels()
     // this.setFilter()
     // store.subscribe('mutation', (mutation, state) => {
     //   console.log(mutation)
@@ -103,7 +105,7 @@ export default {
       }
 
       console.log(result)
-      this.fLabel = result
+      this.fLabels = result
     },
     getLabels () {
       var array = this.сollections
@@ -116,7 +118,7 @@ export default {
       }
 
       console.log(result)
-      this.label = result
+      this.labels = result
     }
   }
 }
