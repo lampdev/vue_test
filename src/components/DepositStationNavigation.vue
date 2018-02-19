@@ -53,12 +53,11 @@ export default {
     updateFilters (payload) {
       let filter = this.navigations[payload].filter || false
       if (filter) {
-        store.commit('updateFilter', filter)
+        store.commit('updateFilter', filter.status)
         store.commit('updateGroup', false)
       } else {
         store.commit('updateGroup', true)
       }
-      // store.commit('updateChange', true)
     }
   }
 }

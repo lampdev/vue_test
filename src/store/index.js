@@ -45,7 +45,7 @@ export default new Vuex.Store({
       ]
     },
     filter: {
-      status: 0
+      status: 1
     },
     group: false
   },

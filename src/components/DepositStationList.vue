@@ -8,12 +8,12 @@
         </Card>
         <br>
       </li>
-      <!-- <li v-for="сollection in filteredLabels" v-else="filter !== 0">
+      <li v-for="сollection in fLabels"  v-if="filter == 1">
         <Card :bordered="false" >
           <p>{{сollection.label}}</p>
         </Card>
         <br>
-      </li> -->
+      </li>
     </ul>
     <ul id="v-for-object" class="demo" v-else>
       <li v-for="group in groups">
@@ -46,9 +46,6 @@ export default {
     group () {
       return store.getters.getGroup
     },
-    // labels () {
-    //   return store.getters.getLabels
-    // },
     filteredLabels () {
       return store.getters.getFilteredLabels
     },
@@ -104,12 +101,11 @@ export default {
         }
       }
 
-      console.log(result)
       this.fLabels = result
     },
     getLabels () {
       var array = this.сollections
-      console.log(array, status)
+
       var result = []
       for (let key in array) {
         if (array[key].status === 0) {
@@ -117,7 +113,6 @@ export default {
         }
       }
 
-      console.log(result)
       this.labels = result
     }
   }
