@@ -1,12 +1,11 @@
 <template>
     <Menu theme="dark" width="auto" :class="menuitemClasses" :active-name="active">
       <template v-for="(navigation, index) in navigations">
-        <MenuItem :name="index" :key="index" @click="updateFilters(navigation)">
+        <MenuItem :name="index" :key="index" @click.native.prevent="updateFilters($event, index)">
           <Icon
             :title="navigation.title"
             :key="index"
             :class="navigation.name"
-            @click.native="updateFilters(index)"
           >
           <Poptip placement="left" width="400">
             <div class="api" slot="content">
@@ -50,7 +49,7 @@ export default {
   },
   mounted () {},
   methods: {
-    updateFilters (payload) {
+     updateFilters: function (event, payload) {
       let filter = this.navigations[payload].filter || false
       if (filter) {
         store.commit('updateFilter', filter.status)
