@@ -6,8 +6,14 @@ import router from './router'
 import store from './store'
 import iView from 'iview'
 import 'iview/dist/styles/iview.css'
+import VueLocalStorage from 'vue-ls';
+
+const options = {
+  namespace: 'vuejs__'
+}
 
 Vue.use(iView)
+Vue.use(VueLocalStorage, options)
 
 Vue.config.productionTip = false
 

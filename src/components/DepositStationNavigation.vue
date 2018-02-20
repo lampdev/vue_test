@@ -23,6 +23,7 @@
 </template>
 
 <script>
+import Vue from 'vue'
 import store from '@/store'
 
 export default {
@@ -30,7 +31,6 @@ export default {
   name: 'deposit-station-navigation',
   data () {
     return {
-      active: 0,
       formItem: {
         input: ''
       }
@@ -45,11 +45,20 @@ export default {
         'menu-item',
         this.isCollapsed ? 'collapsed-menu' : ''
       ]
+    },
+    active () {
+      let index = Vue.ls.get('nav', 1)
+
+      this.updateFilters(null, index)
+
+      return index
     }
   },
   mounted () {},
   methods: {
      updateFilters: function (event, payload) {
+      Vue.ls.set('nav', payload);
+
       let filter = this.navigations[payload].filter || false
       if (filter) {
         store.commit('updateFilter', filter.status)
